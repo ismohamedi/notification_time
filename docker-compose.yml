@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  web:
+    restart: "always"
+    build: .
+    # environment:
+    #   IP: 41.59.88.233
+    command: bash -c "uvicorn main:app --host 0.0.0.0 --port 8001"
+    container_name: reminder
+    image: reminder
+    working_dir: /notification_time
+    volumes:
+      - .:/notification_time
+    ports:
+      - "8001:8001"
+    # depends_on:
+    #   - db
+      # - redis
